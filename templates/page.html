@@ -1,0 +1,103 @@
+<%inherit file="base.html"/>
+
+<%def name="chapter_main()">
+    <div id="chapter-body">
+        <div class="document">
+            ${ content }
+        </div>
+    </div>
+</%def>
+
+<%def name="proxy()">
+    <div class="yresizable-proxy" id="translations-rzproxy"></div>
+    <div class="yresizable-proxy" id="bookcomments-rzproxy"></div>
+</%def>
+
+<%def name="nav()">
+    <div class="nav">
+        <a href="/">目  录</a>
+    </div>
+</%def>
+
+<%def name="chapter_ft()">
+    <div id="ft">
+        ${ self.nav() }
+    </div>
+</%def>
+
+<%def name="comment()">
+    <div style="visibility: hidden; opacity: 0.3; width: 750px;" id="highlight-floater"></div>
+    <div style="display: none; width: 498px; height: 398px;" id="bookcomments" class="yresizable-pinned">
+        <div class="hd" id="bookcomments-head">
+                  Comments <span class="close" onclick="Comments.close();">X</span>
+        </div>
+        <div class="bd">
+            <div id="comment-tabs">
+                <!-- comment form -->
+                <div style="display: block;" id="comment-tabs-form" class="tab yui-ext-tabitembody">
+                    <form action="comments/" method="post" id="commentform">
+                        <p>
+                            <input name="nodenum" value="" type="hidden">
+                            <label for="id_comment">评注</label>
+                            <textarea style="width: 466px; height: 116px;" name="comment" id="id_comment" tabindex="4" cols="40" rows="15"></textarea>
+                        </p>
+                    </form>
+                </div>
+                <!-- comments on this node tab: filled in dynamically -->
+                <div style="display: none;" id="comment-tabs-current" class="tab yui-ext-tabitembody">
+                    <ol id="current-comments-list"></ol>
+                </div>
+                <!-- all comments tab: also dynamic -->
+                <div style="display: none;" id="comment-tabs-all" class="tab yui-ext-tabitembody">
+                    <ol id="all-comments-list"></ol>
+                </div>
+                <!-- help -->
+                <div style="display: none;" id="comment-tabs-help" class="tab yui-ext-tabitembody">
+                    <h4>关于本评注系统</h4>
+                    <p>
+                                        本站使用上下文关联的评注系统来收集反馈信息。不同于一般对整章做评注的做法，
+                                        我们允许你对每一个独立的“文本块”做评注。一个“文本块”看起来是这样的：
+                    </p>
+                    <p class="image">
+                        <img src="${ url_for('static', filename='images/comments1.png') }" height="100" width="350">
+                    </p>
+                    <p>
+                                        一个“文本块”是一个段落，一个列表项，一段代码，或者其他一小段内容。
+                                        你选中它会高亮度显示:
+                    </p>
+                    <p class="image">
+                        <img src="${ url_for('static', filename='images/comments2.png') }" height="100" width="350">
+                    </p>
+                    <p>
+                                        要对文本块做评注，你只需要点击它旁边的标识块:
+                    </p>
+                    <p class="image">
+                        <img src="${ url_for('static', filename='images/comments3.png') }" height="100" width="350">
+                    </p>
+                    <p>
+                                        我们会仔细阅读每个评论，如果可能的话我们也会把评注考虑到未来的版本中去:
+                    </p>
+                    <p>
+                                        如果你愿意你的评注被采用，请确保留下你的全名 (注意不是昵称或简称）
+                    </p>
+                    <p class="image">
+                        <img src="${ url_for('static', filename='images/comments4.png') }" height="100" width="350">
+                    </p>
+                    <p>
+                                        Many, many thanks to <a href="http://www.jackslocum.com/yui/">Jack Slocum</a>;
+                                        the inspiration and much of the code for the comment system comes from Jack's
+                                        blog, and this site couldn't have been built without his wonderful
+                        <code>YAHOO.ext</code> library.  Thanks also to Yahoo for YUI itself.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="ft">
+            <div style="visibility: hidden;" class="" id="bookcomments-message"></div>
+            <div id="comments-submit-wrapper">
+                <input style="visibility: visible;" id="comment-submit" value="提交" onclick="Comments.submitComment();" type="button">
+                <input id="comment-close" value="关闭" onclick="Comments.close();" type="button">
+            </div>
+        </div>
+    </div>
+</%def>

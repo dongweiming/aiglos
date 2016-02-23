@@ -1,0 +1,9 @@
+<%def name="main(comments)">
+    % for comment in comments:
+        <li class="comment" id="2408"><dl><dt>
+            <a href="" rel="nofollow"></a>
+            <span class="meta">${ comment.pub_date }</span></dt>
+            <dd><p>${ comment.content }</p></dd></dl>
+        </li>
+    % endfor
+</%def>

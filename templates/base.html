@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>Aiglos</title>
+        <link rel="stylesheet" href="${ url_for('static', filename='css/reset-min.css') }" type="text/css">
+        <link rel="stylesheet" href="${ url_for('static', filename='css/grids-min.css') }" type="text/css">
+        <link rel="stylesheet" href="${ url_for('static', filename='css/aiglos.css') }" type="text/css">
+
+    </head>
+    <body>
+        ${ self.proxy() }
+        <div id="doc" class="yui-t7">
+            <div id="hd">
+                <h1><a href="/">Book</a></h1>
+                <div id="global-nav">
+                    <a class="about" href="/about/">About</a>
+                </div>
+                ${ self.nav() }
+            </div>
+            <div id="bd">
+                <div id="yui-main">
+                    <div class="yui-b">
+                        ${ self.chapter_main() }
+                    </div>
+                </div>
+            </div>
+            ${ self.chapter_ft() }
+        </div>
+
+        ${ self.comment() }
+        <div id="ft">
+            Copyright 2016 Dongweiming.<br>This
+            work is licensed under the <a href="http://new.djangobook.com/license/">GNU Free Document
+            License</a>.
+            <br/>
+        </div>
+        <script type="text/javascript" src="${ url_for('static', filename='js/aiglos.js') }"></script>
+    </body>
+</html>
+
+<%def name="nav()">
+</%def>
+
+<%def name="chapter_main()">
+</%def>
+
+<%def name="proxy()">
+</%def>
+
+<%def name="chapter_ft()">
+</%def>
+
+<%def name="comment()">
+</%def>
